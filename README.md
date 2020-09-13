@@ -1,6 +1,6 @@
 # RollABall
 
-# By Jonathan Casper
+# By Jonathan Casper and Cam Cohu
 
 A Unity Game in which the player controls a ball and collects cubes.
 
