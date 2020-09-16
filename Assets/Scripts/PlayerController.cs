@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public GameObject MainMenuButton;
     public ParticleSystem Collect;
     public ParticleSystem PoweredUp;
+    public ParticleSystem OpenCage;
     public bool isOnGround = true;
 
     private Rigidbody rb;
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
         RestartButton.SetActive(false);
         MainMenuButton.SetActive(false);
         PoweredUp.Pause();
+        OpenCage.Pause();
 
         playerActionControls.Player.Jump.performed += _ => Jump();
         playerActionControls.Player.Restart.performed += _ => MainMenu();
@@ -87,7 +89,6 @@ public class PlayerController : MonoBehaviour
         if (isOnGround)
         {
             rb.AddForce(new Vector2(0, jumpForce), ForceMode.Impulse);
-            isOnGround = false;
         }
     }
 
@@ -95,18 +96,21 @@ public class PlayerController : MonoBehaviour
     {
         if (isGameOn)
         {
+            // Collide with pickup item
             if (other.gameObject.CompareTag("PickUp"))
             {
                 other.gameObject.SetActive(false);
                 count++;
                 SetCountText();
             }
+
             //This is so when coming in contact with a block the isOnGround bool doesn't turn true
             if (other.gameObject.CompareTag("Ground"))
             {
                 isOnGround = true;
             }
 
+            // Collide with SpeedBoost powerup
             if(other.gameObject.CompareTag("SpeedBoost"))
             {
                 other.gameObject.SetActive(false);
@@ -115,10 +119,21 @@ public class PlayerController : MonoBehaviour
                 PoweredUp.Play();
                 StartCoroutine("StopSpeedBoost");
             }
+
+            // Checks to see if player has a key for the cage
             if(other.gameObject.CompareTag("Cage") && hasKey == true)
             {
                 other.gameObject.SetActive(false);
+                OpenCage.Play();
             }
+
+            // If player hits a kill plane then GameOver
+            if (other.gameObject.CompareTag("KillPlane"))
+            {
+                GameOver();
+            }
+
+            // Sees if player picked up the needed amount of cubes
             if (count >= scoreToWin)
             {
                 WinGame();
@@ -133,6 +148,18 @@ public class PlayerController : MonoBehaviour
         PoweredUp.Stop();
         speed = 15;
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            isOnGround = true;
+        }
+        else
+        {
+            isOnGround = false;
+        }
+    }
     // So the player cannot roll off a block and jump mid-air
     private void OnTriggerExit(Collider other)
     {
@@ -142,18 +169,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void SetCountText()
+    private void SetCountText()
     {
         countText.text = "Count: " + count.ToString();
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "Ground")
-        {
-            isOnGround = true;
-        }
-    }
     private void WinGame()
     {
         WinTextObject.SetActive(true);
