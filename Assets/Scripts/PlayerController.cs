@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private float movementX;
     private float movementY;
     private bool isGameOn = true;
+    private bool hasKey = false;
 
     private void Awake()
     {
@@ -114,6 +115,10 @@ public class PlayerController : MonoBehaviour
                 PoweredUp.Play();
                 StartCoroutine("StopSpeedBoost");
             }
+            if(other.gameObject.CompareTag("Cage") && hasKey == true)
+            {
+                other.gameObject.SetActive(false);
+            }
             if (count >= scoreToWin)
             {
                 WinGame();
@@ -136,6 +141,7 @@ public class PlayerController : MonoBehaviour
             isOnGround = false;
         }
     }
+
     void SetCountText()
     {
         countText.text = "Count: " + count.ToString();
@@ -163,6 +169,12 @@ public class PlayerController : MonoBehaviour
         isGameOn = false;
         RestartButton.SetActive(true);
         MainMenuButton.SetActive(true);
+    }
+
+    public void grabKey()
+    {
+        hasKey = true;
+        Debug.Log("Unlock!");
     }
 
     public void NextLevel()
