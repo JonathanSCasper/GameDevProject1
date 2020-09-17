@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
     public GameObject MainMenuButton;
     public ParticleSystem Collect;
     public ParticleSystem PoweredUp;
-    public ParticleSystem OpenCage;
     public bool isOnGround = true;
 
     private Rigidbody rb;
@@ -30,7 +29,6 @@ public class PlayerController : MonoBehaviour
     private float movementX;
     private float movementY;
     private bool isGameOn = true;
-    private bool hasKey = false;
 
     private void Awake()
     {
@@ -48,7 +46,6 @@ public class PlayerController : MonoBehaviour
         RestartButton.SetActive(false);
         MainMenuButton.SetActive(false);
         PoweredUp.Pause();
-        OpenCage.Pause();
 
         playerActionControls.Player.Jump.performed += _ => Jump();
         playerActionControls.Player.Restart.performed += _ => MainMenu();
@@ -111,7 +108,7 @@ public class PlayerController : MonoBehaviour
             }
 
             // Collide with SpeedBoost powerup
-            if(other.gameObject.CompareTag("SpeedBoost"))
+            if (other.gameObject.CompareTag("SpeedBoost"))
             {
                 other.gameObject.SetActive(false);
                 speed = 30;
@@ -121,11 +118,11 @@ public class PlayerController : MonoBehaviour
             }
 
             // Checks to see if player has a key for the cage
-            if(other.gameObject.CompareTag("Cage") && hasKey == true)
-            {
-                other.gameObject.SetActive(false);
-                OpenCage.Play();
-            }
+            //if(other.gameObject.CompareTag("Cage") && hasKey == true)
+            //{
+            //    other.gameObject.SetActive(false);
+            //    //OpenCage.Play();
+            //}
 
             // If player hits a kill plane then GameOver
             if (other.gameObject.CompareTag("KillPlane"))
@@ -154,10 +151,6 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Ground")
         {
             isOnGround = true;
-        }
-        else
-        {
-            isOnGround = false;
         }
     }
     // So the player cannot roll off a block and jump mid-air
@@ -191,39 +184,24 @@ public class PlayerController : MonoBehaviour
         MainMenuButton.SetActive(true);
     }
 
-    public void grabKey()
-    {
-        hasKey = true;
-        Debug.Log("Unlock!");
-    }
-
-    public void NextLevel()
-    {
-        SceneManager.LoadScene("Level2");
-    }
-    public void RestartLevel()
-    {
-        SceneManager.LoadScene("Level1");
-    }
-
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
 
-    private void JumpLevel1()
+    public void JumpLevel1()
     {
         SceneManager.LoadScene("Level1");
     }
-    private void JumpLevel2()
+    public void JumpLevel2()
     {
         SceneManager.LoadScene("Level2");
     }
-    private void JumpLevel3()
+    public void JumpLevel3()
     {
         SceneManager.LoadScene("Level3");
     }
-    private void JumpLevel4()
+    public void JumpLevel4()
     {
         SceneManager.LoadScene("Level4");
     }

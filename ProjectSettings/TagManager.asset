@@ -7,6 +7,9 @@ TagManager:
   - PickUp
   - Ground
   - SpeedBoost
+  - Cage
+  - KillPlane
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX

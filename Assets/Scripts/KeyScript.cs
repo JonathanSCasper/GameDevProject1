@@ -22,7 +22,6 @@ public class KeyScript : MonoBehaviour
         {
             Debug.Log("Got Key");
             gameObject.SetActive(false);
-            other.gameObject.SendMessage("grabKey");
         }
     }
 }
