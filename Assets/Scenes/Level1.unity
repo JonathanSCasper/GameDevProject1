@@ -486,6 +486,7 @@ MonoBehaviour:
   MainMenuButton: {fileID: 684601583}
   Collect: {fileID: 626964641}
   PoweredUp: {fileID: 152862754}
+  DeathAnim: {fileID: 0}
   isOnGround: 1
 --- !u!114 &101359760
 MonoBehaviour:
@@ -967,7 +968,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 101359759}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: JumpLevel1
+        m_MethodName: OnJumpLevel1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1339,7 +1340,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 101359759}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: MainMenu
+        m_MethodName: OnRestart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2098,7 +2099,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 101359759}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: JumpLevel2
+        m_MethodName: OnJumpLevel2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

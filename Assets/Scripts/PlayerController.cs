@@ -51,12 +51,12 @@ public class PlayerController : MonoBehaviour
         PoweredUp.Pause();
         DeathAnim.Pause();
 
-        playerActionControls.Player.Jump.performed += _ => Jump();
-        playerActionControls.Player.Restart.performed += _ => MainMenu();
-        playerActionControls.Player.JumpLevel1.performed += _ => JumpLevel1();
-        playerActionControls.Player.JumpLevel2.performed += _ => JumpLevel2();
-        playerActionControls.Player.JumpLevel3.performed += _ => JumpLevel3();
-        playerActionControls.Player.JumpLevel4.performed += _ => JumpLevel4();
+        //playerActionControls.Player.Jump.performed += _ => Jump();
+        //playerActionControls.Player.Restart.performed += _ => MainMenu();
+        //playerActionControls.Player.JumpLevel1.performed += _ => JumpLevel1();
+        //playerActionControls.Player.JumpLevel2.performed += _ => JumpLevel2();
+        //playerActionControls.Player.JumpLevel3.performed += _ => JumpLevel3();
+        //playerActionControls.Player.JumpLevel4.performed += _ => JumpLevel4();
 
     }
     private void OnEnable()
@@ -85,13 +85,14 @@ public class PlayerController : MonoBehaviour
         movementY = movementVector.y;
     }
 
-    void Jump()
+    void OnJump()
     {
         if (isOnGround)
         {
             rb.AddForce(new Vector2(0, jumpForce), ForceMode.Impulse);
             isOnGround = false;
         }
+        Debug.Log("The Jump Method is being called, you fool!");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -203,24 +204,24 @@ public class PlayerController : MonoBehaviour
         MainMenuButton.SetActive(true);
     }
 
-    public void MainMenu()
+    public void OnRestart()
     {
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void JumpLevel1()
+    public void OnJumpLevel1()
     {
         SceneManager.LoadScene("Level1");
     }
-    public void JumpLevel2()
+    public void OnJumpLevel2()
     {
         SceneManager.LoadScene("Level2");
     }
-    public void JumpLevel3()
+    public void OnJumpLevel3()
     {
         SceneManager.LoadScene("Level3");
     }
-    public void JumpLevel4()
+    public void OnJumpLevel4()
     {
         SceneManager.LoadScene("Level4");
     }
