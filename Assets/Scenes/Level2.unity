@@ -460,7 +460,7 @@ GameObject:
   - component: {fileID: 57572872}
   m_Layer: 0
   m_Name: Key
-  m_TagString: Untagged
+  m_TagString: Key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -751,7 +751,6 @@ MonoBehaviour:
   MainMenuButton: {fileID: 684601583}
   Collect: {fileID: 626964641}
   PoweredUp: {fileID: 152862754}
-  OpenCage: {fileID: 1647245001}
   isOnGround: 1
 --- !u!114 &101359760
 MonoBehaviour:
@@ -1373,7 +1372,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 333150156}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1450,7 +1449,7 @@ MeshCollider:
   m_GameObject: {fileID: 333150156}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -2173,7 +2172,7 @@ MeshCollider:
   m_GameObject: {fileID: 669878972}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -2249,7 +2248,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 669878972}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10, y: 2.220446e-16, z: 10}
@@ -3595,7 +3594,7 @@ MeshCollider:
   m_GameObject: {fileID: 1050449445}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -3657,7 +3656,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050449445}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10, y: 2.220446e-16, z: 10}
@@ -5206,6 +5205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1706024252}
   - component: {fileID: 1706024253}
+  - component: {fileID: 1706024254}
   m_Layer: 0
   m_Name: Cage
   m_TagString: Cage
@@ -5254,6 +5254,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1706024254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706024251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a95ddfdff4a69f4fb54ff90a23fb69b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OpenCage: {fileID: 1647245001}
 --- !u!1001 &1733416204
 PrefabInstance:
   m_ObjectHideFlags: 0

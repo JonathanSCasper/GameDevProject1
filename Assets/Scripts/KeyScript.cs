@@ -20,7 +20,6 @@ public class KeyScript : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Got Key");
             gameObject.SetActive(false);
         }
     }

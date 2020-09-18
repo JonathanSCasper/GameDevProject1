@@ -10,6 +10,7 @@ TagManager:
   - Cage
   - KillPlane
   - FxTemporaire
+  - Key
   layers:
   - Default
   - TransparentFX

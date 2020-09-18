@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private float movementX;
     private float movementY;
     private bool isGameOn = true;
+    private bool hasKey = false;
 
     private void Awake()
     {
@@ -86,6 +87,7 @@ public class PlayerController : MonoBehaviour
         if (isOnGround)
         {
             rb.AddForce(new Vector2(0, jumpForce), ForceMode.Impulse);
+            isOnGround = false;
         }
     }
 
@@ -118,16 +120,20 @@ public class PlayerController : MonoBehaviour
             }
 
             // Checks to see if player has a key for the cage
-            //if(other.gameObject.CompareTag("Cage") && hasKey == true)
-            //{
-            //    other.gameObject.SetActive(false);
-            //    //OpenCage.Play();
-            //}
+            if (other.gameObject.CompareTag("Cage") && hasKey == true)
+            {
+                other.gameObject.SendMessage("UnlockCage");
+            }
 
             // If player hits a kill plane then GameOver
             if (other.gameObject.CompareTag("KillPlane"))
             {
                 GameOver();
+            }
+
+            if(other.gameObject.CompareTag("Key"))
+            {
+                hasKey = true;
             }
 
             // Sees if player picked up the needed amount of cubes
@@ -146,13 +152,14 @@ public class PlayerController : MonoBehaviour
         speed = 15;
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.tag == "Ground")
+        if (collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
         }
     }
+
     // So the player cannot roll off a block and jump mid-air
     private void OnTriggerExit(Collider other)
     {

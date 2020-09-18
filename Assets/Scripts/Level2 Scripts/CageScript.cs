@@ -19,35 +19,19 @@ public class CageScript : MonoBehaviour
         
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if(other.gameObject.CompareTag("Player") && hasKey == true)
-    //    {
-    //        gameObject.SetActive(false);
-    //        OpenCage.Play();
-    //        Debug.Log("Open cage");
-    //    }
-
-    //    if(other.gameObject.CompareTag("Key"))
-    //    {
-    //        Debug.Log("Got Key");
-    //        hasKey = true;
-    //    }
-    //}
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag == "Player" && hasKey == true)
-        {
-            gameObject.SetActive(false);
-            OpenCage.Play();
-            Debug.Log("Open cage");
-        }
-
-        if (collision.gameObject.CompareTag("Key"))
+        if (other.gameObject.CompareTag("Key"))
         {
             Debug.Log("Got Key");
             hasKey = true;
         }
+    }
+
+    public void UnlockCage()
+    {
+        gameObject.SetActive(false);
+        OpenCage.Play();
+        Debug.Log("Open cage");
     }
 }
