@@ -11,6 +11,7 @@ TagManager:
   - KillPlane
   - FxTemporaire
   - Key
+  - DeathCube
   layers:
   - Default
   - TransparentFX

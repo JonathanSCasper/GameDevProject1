@@ -6,8 +6,6 @@ public class CageScript : MonoBehaviour
 {
     public ParticleSystem OpenCage;
 
-    private bool hasKey = false;
-
     void Start()
     {
         OpenCage.Pause();
@@ -24,7 +22,6 @@ public class CageScript : MonoBehaviour
         if (other.gameObject.CompareTag("Key"))
         {
             Debug.Log("Got Key");
-            hasKey = true;
         }
     }
 

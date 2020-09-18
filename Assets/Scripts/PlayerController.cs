@@ -7,6 +7,7 @@ using System.ComponentModel;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
+using System.Threading.Tasks;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public GameObject MainMenuButton;
     public ParticleSystem Collect;
     public ParticleSystem PoweredUp;
+    public ParticleSystem DeathAnim;
     public bool isOnGround = true;
 
     private Rigidbody rb;
@@ -47,6 +49,7 @@ public class PlayerController : MonoBehaviour
         RestartButton.SetActive(false);
         MainMenuButton.SetActive(false);
         PoweredUp.Pause();
+        DeathAnim.Pause();
 
         playerActionControls.Player.Jump.performed += _ => Jump();
         playerActionControls.Player.Restart.performed += _ => MainMenu();
@@ -152,11 +155,20 @@ public class PlayerController : MonoBehaviour
         speed = 15;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private async void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
+        }
+       
+        if(collision.gameObject.CompareTag("DeathCube"))
+        {
+            DeathAnim.transform.position = gameObject.transform.position;
+            DeathAnim.Play();
+            gameObject.SetActive(false);
+            await Task.Delay(2000);
+            GameOver();
         }
     }
 
