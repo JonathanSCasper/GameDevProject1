@@ -92,7 +92,6 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(new Vector2(0, jumpForce), ForceMode.Impulse);
             isOnGround = false;
         }
-        Debug.Log("The Jump Method is being called, you fool!");
     }
 
     private void OnTriggerEnter(Collider other)
