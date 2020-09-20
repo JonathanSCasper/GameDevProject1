@@ -21,6 +21,7 @@ public class KeyScript : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             gameObject.SetActive(false);
+            Debug.Log("GotKey");
         }
     }
 }

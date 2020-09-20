@@ -701,7 +701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 101359753}
   timerText: {fileID: 2055178827}
-  TotalSeconds: 30
+  TotalSeconds: 35
 --- !u!4 &109371270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2572146699274637209, guid: 25ccbe86b9a24e9469fbc141bf8de5d4, type: 3}
@@ -2773,7 +2773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 759830351891446867, guid: ea21b510e71a2eb4c804de428e16236e, type: 3}
       propertyPath: m_TagString
-      value: Ground
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 759830351891446869, guid: ea21b510e71a2eb4c804de428e16236e, type: 3}
       propertyPath: m_Materials.Array.data[0]

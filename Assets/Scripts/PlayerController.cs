@@ -33,9 +33,11 @@ public class PlayerController : MonoBehaviour
     private bool isGameOn = true;
     private bool hasKey = false;
 
-    private void Awake()
+    private async void Awake()
     {
         playerActionControls = new PlayerActionControls();
+        await Task.Delay(2000);
+
     }
 
     void Start()
@@ -50,13 +52,6 @@ public class PlayerController : MonoBehaviour
         MainMenuButton.SetActive(false);
         PoweredUp.Pause();
         DeathAnim.Pause();
-
-        //playerActionControls.Player.Jump.performed += _ => Jump();
-        //playerActionControls.Player.Restart.performed += _ => MainMenu();
-        //playerActionControls.Player.JumpLevel1.performed += _ => JumpLevel1();
-        //playerActionControls.Player.JumpLevel2.performed += _ => JumpLevel2();
-        //playerActionControls.Player.JumpLevel3.performed += _ => JumpLevel3();
-        //playerActionControls.Player.JumpLevel4.performed += _ => JumpLevel4();
 
     }
     private void OnEnable()
@@ -153,6 +148,11 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(5);
         PoweredUp.Stop();
         speed = 15;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        isOnGround = true;
     }
 
     private async void OnCollisionEnter(Collision collision)
