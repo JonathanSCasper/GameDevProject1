@@ -24,6 +24,10 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem PoweredUp;
     public ParticleSystem DeathAnim;
     public bool isOnGround = true;
+    public AudioSource Source;
+    public AudioClip CoinCollect;
+    public AudioClip Death;
+    public AudioClip LoseSound;
 
     private Rigidbody rb;
     private PlayerActionControls playerActionControls;
@@ -33,11 +37,9 @@ public class PlayerController : MonoBehaviour
     private bool isGameOn = true;
     private bool hasKey = false;
 
-    private async void Awake()
+    private void Awake()
     {
         playerActionControls = new PlayerActionControls();
-        await Task.Delay(2000);
-
     }
 
     void Start()
@@ -97,6 +99,7 @@ public class PlayerController : MonoBehaviour
             if (other.gameObject.CompareTag("PickUp"))
             {
                 other.gameObject.SetActive(false);
+                Source.PlayOneShot(CoinCollect);
                 count++;
                 SetCountText();
             }
@@ -165,6 +168,7 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.CompareTag("DeathCube"))
         {
             DeathAnim.transform.position = gameObject.transform.position;
+            Source.PlayOneShot(Death);
             DeathAnim.Play();
             gameObject.SetActive(false);
             await Task.Delay(2000);
@@ -201,6 +205,7 @@ public class PlayerController : MonoBehaviour
         isGameOn = false;
         RestartButton.SetActive(true);
         MainMenuButton.SetActive(true);
+        Source.PlayOneShot(LoseSound);
     }
 
     public void OnRestart()
