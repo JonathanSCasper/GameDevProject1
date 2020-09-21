@@ -512,6 +512,7 @@ MonoBehaviour:
   Player: {fileID: 101359753}
   timerText: {fileID: 2055178827}
   TotalSeconds: 30
+  leaderBoard: {fileID: 0}
 --- !u!198 &152862754 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 19800004, guid: 757df604761b8ef42831192c70ee1099, type: 3}

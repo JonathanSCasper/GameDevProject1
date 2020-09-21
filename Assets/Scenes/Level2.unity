@@ -702,6 +702,7 @@ MonoBehaviour:
   Player: {fileID: 101359753}
   timerText: {fileID: 2055178827}
   TotalSeconds: 35
+  leaderBoard: {fileID: 0}
 --- !u!4 &109371270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2572146699274637209, guid: 25ccbe86b9a24e9469fbc141bf8de5d4, type: 3}

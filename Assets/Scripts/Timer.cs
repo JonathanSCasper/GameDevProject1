@@ -5,9 +5,12 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
+    public static float TotalTime = 0;
+
     public GameObject Player;
     public TextMeshProUGUI timerText;
     public float TotalSeconds;
+    public LeaderBoard leaderBoard;
     private bool GameOn = true;
 
     private float CurrentTime;
@@ -16,6 +19,8 @@ public class Timer : MonoBehaviour
     void Start()
     {
         CurrentTime = TotalSeconds;
+        if (gameObject.scene.name == "Level1")
+            TotalTime = 0;
     }
 
     // Update is called once per frame
@@ -26,6 +31,7 @@ public class Timer : MonoBehaviour
             if (CurrentTime > 0)
             {
                 CurrentTime -= 1 * Time.deltaTime;
+                TotalTime += 1 * Time.deltaTime;
                 timerText.text = CurrentTime.ToString("f0");
             }
             else
@@ -38,6 +44,10 @@ public class Timer : MonoBehaviour
     public void EndGame()
     {
         GameOn = false;
+        if (gameObject.scene.name == "Level4")
+        {
+            leaderBoard.AddScore(TotalTime);
+        }
     }
 
 }
