@@ -31,7 +31,7 @@ public class Timer : MonoBehaviour
             }
             else
             {
-                if(GameEnded != true)
+                if (GameEnded != true && CurrentTime == 0)
                 {
                     gameObject.SendMessage("GameOver");
                     GameEnded = true;
