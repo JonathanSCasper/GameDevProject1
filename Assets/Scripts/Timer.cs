@@ -14,7 +14,6 @@ public class Timer : MonoBehaviour
     private bool GameOn = true;
 
     private float CurrentTime;
-    private bool GameEnded = false;
 
     // Start is called before the first frame update
     void Start()
@@ -37,11 +36,7 @@ public class Timer : MonoBehaviour
             }
             else
             {
-                if (GameEnded != true && CurrentTime == 0)
-                {
-                    gameObject.SendMessage("GameOver");
-                    GameEnded = true;
-                }
+                gameObject.SendMessage("GameOver");
             }
         }
     }
