@@ -99,6 +99,8 @@ public class PlayerController : MonoBehaviour
                 other.gameObject.SetActive(false);
                 count++;
                 SetCountText();
+
+                FindObjectOfType<AudioManager>().Play("Pickup");
             }
 
             //This is so when coming in contact with a block the isOnGround bool doesn't turn true
